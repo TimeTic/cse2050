@@ -21,26 +21,24 @@
 #             print("Fizz")
 #         elif i % 5 == 0:
 #             print("Buzz")
-#         else: 
+#         else:
 #             print(i)
 # fizzbuzz(1,101)
 
-#-----------------------------------------------------------------------#
+# -----------------------------------------------------------------------#
 
 def fizzbuzz(start, finish):
     """Fizz, Buzz, FizzBuzz"""
-    for i in range(start, finish):
+    for i in range(start, finish + 1):
         if i % 3 == 0 and i % 5 == 0:
-            print("FizzBuzz")
-        elif i % 3 == 0 or '3' in str(i) or i % 5 == 0 or '5' in str(i):
+            print("fizzbuzz")
+        elif (i % 3 == 0 or '3' in str(i)) or (i % 5 == 0 or '5' in str(i)):
             output = ""
             if i % 3 == 0 or '3' in str(i):
-                output += "Fizz"
+                output += "fizz"
             if i % 5 == 0 or '5' in str(i):
-                output += "Buzz"
+                output += "buzz"
             print(output)
         else:
             print(i)
-fizzbuzz(1, 101)
-
-
+fizzbuzz(1, 100)
