@@ -10,4 +10,4 @@ def count_letters(file):
                     if letter_char in text}
     return letter_count
 # print letters
-print(count_letters())
+
