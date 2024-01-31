@@ -37,9 +37,32 @@ if __name__ == "__main__":
     print(tim)
     print(my_dog)
 
-    
+
     #-----------------------------------------------------------------------
     
 
 #Polymorphism
-    "describe patterns "
+    "describe patterns where object share a method name, but have diff implementations for that mehtod"
+
+# Inheritance is one way to achieve this
+    
+#Pythin has a built-in (parametritc) polymorphism, basesd on the idead of duck typing
+
+#---------------------------------------
+    
+#Composition
+    """Another common OOP pattern.
+    the pattern where a class stores an istance of another class
+    Composition refers to a "has a" relationship
+
+    """
+
+#
+    
+def EvenList(sefl):
+    self.list=[]
+    def add(self,x):
+        if x%2==0:
+            self.list.append(x)
+            def remove(self,x):
+        
