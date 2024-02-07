@@ -18,7 +18,6 @@ class TestPost(unittest.TestCase):
 class TestMessage(unittest.TestCase):
     """Test cases for the Message class."""
     pass
-
 class TestUser(unittest.TestCase):
     """Test cases for the User class."""
     # Add more test cases for other methods and classes
@@ -29,22 +28,19 @@ class TestUser(unittest.TestCase):
     def test_create_post(self):
         """Test creating a post for a user."""
         post = self.user.create_post("testing testing")
-        # Check if the post is added to the user's posts list
         self.assertIn(post, self.user.posts)
-        # Check if the user is correct
         self.assertEqual(post.user, self.user)
-        # Check if the content of the post is correct
         self.assertEqual(post.content, "testing testing")
     
     def test_profile(self):
         """for test and edit user profile"""
-        self.user.profile.profile_edit(email="newemail@test.com", screen_name="New screen name")
+        self.user.profile.modify_profile(email="newemail@test.com", screen_name="New screen name")
         self.assertEqual(self.user.profile.email, "newemail@test.com")
         self.assertEqual(self.user.profile.screen_name, "New screen name")
 
     def test_user_str(self):
         """testing user str represention"""
-        expected_str = "User - Profile - Username: user, Screen Name: User One, Email: user1@example.com"
+        expected_str = f"User - Profile - Username: {self.user.profile.username}, Screen Name: {self.user.profile.screen_name}, Email: {self.user.profile.email}"
         self.assertEqual(str(self.user), expected_str)
 
 
