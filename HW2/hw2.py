@@ -1,39 +1,30 @@
-###############################################################################
-# Collaboration                                                               #
-# -------------                                                               #
-# You can collaborate with up to 3 classmates (for a total of 4 students per  #
-# group). If you do so, remember not to share code directly. Discussions are  #
-# fine, code sharing is not. Also note that all have to submit individually.  #
-#                                                                             #
-# Enter any collaborators here:                                               #
-# Collaborator 1:                                                             #
-# Collaborator 2:                                                             #
-# Collaborator 3:                                                             #
-###############################################################################
+## resubminting to add doc strings.
 class Profile:
     """Class representing a user's profile."""
-    # TODO :Implement __init__ method
-    # Make sure you add a docstring to all methods.
-    def __init__(self, username, screen_name, email):
-        """to initialize profile instance"""
+
+    def __init__(self, username, password, screen_name, email):
+        """to initialize profile instance."""
         self.username = username
+        self.password = password
         self.screen_name = screen_name
         self.email = email
 
-    def profile_edit(self, email=None, screen_name=None):
-        """for user's to edit their profile"""
+    def __str__(self):
+        """Return a string representation of the Profile."""
+        return f"Profile - Username: {self.username}, Screen Name: {self.screen_name}, Email: {self.email}"
+
+    def modify_profile(self, password=None, email=None, screen_name=None):
+        """for users to edit profile."""
+        if password:
+            self.password = password
         if email:
             self.email = email
         if screen_name:
             self.screen_name = screen_name
 
-    def __str__(self):
-        """ Return a string representation of the Profile."""
-        return f"Profile - Username: {self.username}, Screen Name: {self.screen_name}, Email: {self.email}"
 
 class Activity:
     """Base class representing an activity."""
-    # TODO :Implement __init__ method
     def __init__(self, user, content):
         """TO initialize profiel instance"""
         self.user = user
@@ -53,15 +44,15 @@ class Post(Activity):
     def __str__(self):
         """ Return a string representation of the Post. """
         return f"Post - {super().__str__()}"
-    
+
 
 class Message(Activity):
     """Class representing a user's message to another user."""
-    # TODO :Implement __init__ method
     def __init__(self, user, receiver, content):
         """to intialize message instance"""
         super().__init__(user, content)
         self.receiver = receiver
+
     def __str__(self):
         """ Return a string representation of the Message."""
         return f"Message - {super().__str__()}, Receiver: {self.receiver.profile.username}"
@@ -69,11 +60,9 @@ class Message(Activity):
 
 class User:
     """Class representing a user in the social network."""
-    # TODO :Implement __init__ method
     def __init__(self, username, password, screen_name, email):
         """user instancess"""
-        self.profile = Profile(username, screen_name, email)
-        self.password = password
+        self.profile = Profile(username, password, screen_name, email)
         self.posts = []
         self.messages = []
 
@@ -88,37 +77,23 @@ class User:
         Raises:
             ValueError: If the content of the post is empty.
         """
-        # TODO :Implement create_post method
+
         if not content:
             raise ValueError("Content cannot be empty.")
         post = Post(self, content)
         self.posts.append(post)
         return post
+
     def send_message(self, receiver, content):
-        """Send a message from the user to the specified receiver.
-
-        Args:
-            receiver (User): The user receiving the message.
-            content (str): The content of the message.
-
-        Returns:
-            Message: The created message.
-
-        Raises:
-            ValueError: If the receiver ID or message content is empty.
-        """
-        # TODO :Implement send_message method
-        if not  receiver or not content:
+        if not receiver or not content:
             raise ValueError("Receiver and Content must have values")
-        if not content:
-            raise  ValueError("Message content can't be empty.")
-        message =  Message(self, receiver, content)
+        message = Message(self, receiver, content)
         self.messages.append(message)
         return message
 
     def __str__(self):
-        """ Return a string representation of the User."""
         return f"User - {self.profile}"
+
 
 # Example usage:
 if __name__ == "__main__":
@@ -129,7 +104,7 @@ if __name__ == "__main__":
     message1 = user2.send_message(user1, "Hi User One! How are you?")
     print(post1)
     print(message1)
-    user1.profile_edit(email="User1_1@uconn.edu")
+
+    user1.profile.modify_profile(email="User1_1@uconn.edu")  # Corrected method name
     print(user1)
     print(user2)
-

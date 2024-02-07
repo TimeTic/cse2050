@@ -24,7 +24,7 @@ class TestPoint(unittest.TestCase):
         """this for testing if a point is within some distance of another point"""
         self.assertTrue(self.p1.within(5, self.p2))
         self.assertFalse(self.p1.within(1, self.p2))
-
+       
 if __name__ == '__main__':
 
     unittest.main()
