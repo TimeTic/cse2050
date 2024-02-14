@@ -32,7 +32,7 @@
 # # test_linkedlist.py
 
 # import unittest
-# from linkedlist import Node, LinkedList
+# from linkedlist import Node, 
 
 # class TestLinkedList(unittest.TestCase):
 #     def test_empty_init(self):
